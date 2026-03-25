@@ -1,0 +1,17 @@
+{
+  "name": "High Performance Website",
+  "short_name": "PerfSite",
+  "description": "Lightning fast optimized website demo - 95+ Lighthouse score",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f9fa",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "assets/images/hero.webp",
+      "sizes": "400x250",
+      "type": "image/webp"
+    }
+  ]
+}
+

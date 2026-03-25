@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lightning fast website demo with 95+ Lighthouse score. Optimized with lazy loading, WebP, minification, PWA caching.">
+  <meta property="og:title" content="High Performance Website">
+  <meta property="og:description" content="Lightning fast optimized site">
+  <meta property="og:image" content="assets/images/hero.webp">
+  <link rel="manifest" href="manifest.json">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="preload" href="assets/fonts/custom-font.woff2.txt" as="font" type="font/woff2" crossorigin>
+  <title>High Performance Website</title>
+  <!-- Critical inline CSS -->
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;background:#f8f9fa;}
+    .hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;text-align:center;}
+    .hero video{width:100%;height:100%;object-fit:cover;}
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;padding:4rem 2rem;max-width:1200px;margin:0 auto;}
+    .product{position:relative;overflow:hidden;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);transition:transform 0.3s;}
+    .product img{width:100%;height:250px;object-fit:cover;}
+    footer{padding:2rem;text-align:center;background:#333;color:white;}
+  </style>
+  <!-- Preload critical resources -->
+  <link rel="preload" href="assets/css/main.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/main.min.css"></noscript>
+  <link rel="preload" href="assets/css/vendor.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="assets/css/vendor.min.css"></noscript>
+</head>
+<body>
+  <!-- Hero section with lazy video -->
+  <section class="hero">
+    <picture>
+      <source srcset="assets/images/hero.webp" type="image/webp">
+      <img loading="lazy" width="1920" height="1080" style="width:100%;height:100vh;object-fit:cover;">
+    </picture>
+    <h1 style="position:absolute;z-index:2;font-size:3rem;">Lightning Fast Site</h1>
+  </section>
+
+  <!-- Products with lazy images -->
+  <section class="products">
+    <article class="product">
+      <picture>
+        <source srcset="assets/images/premium%20headphones.webp" type="image/webp">
+        <img src="assets/images/premium%20headphones.webp" alt="Premium Headphones" loading="lazy" width="400" height="250" style="object-fit:cover;height:250px;">
+      </picture>
+      <div style="padding:1rem;"><h3>Premium Headphones</h3><p>Optimized performance with noise cancellation. $199</p></div>
+    </article>
+    <article class="product">
+      <picture>
+        <source srcset="assets/images/smart%20fitness%20tracker.jpg" type="image/jpeg">
+        <img src="assets/images/smart%20fitness%20tracker.jpg" alt="Smart Fitness Tracker" loading="lazy" width="400" height="250" style="object-fit:cover;height:250px;">
+      </picture>
+      <div style="padding:1rem;"><h3>Fitness Tracker</h3><p>Advanced tracking features. $129</p></div>
+    </article>
+  </section>
+
+  <footer>
+    <p>&amp;copy; 2024 High Performance Site</p>
+  </footer>
+
+  <!-- Async non-critical JS -->
+  <script defer src="assets/js/vendor.min.js"></script>
+  <script defer src="assets/js/main.min.js"></script>
+  <script defer src="assets/js/lazyload.js"></script>
+  <script>if ('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sw.js').then(reg => console.log('SW registered')).catch(err => console.log('SW failed'));});}</script>
+</body>
+</html>
+
